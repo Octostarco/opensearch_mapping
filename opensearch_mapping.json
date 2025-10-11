@@ -1,3 +1,4 @@
+PUT /os_ontology_v1
 {
   "aliases": {},
   "mappings": {
@@ -6,17 +7,12 @@
       "processing_status": {
         "dynamic": "false",
         "properties": {
-          "executor": {
+          "status_code": {
             "type": "keyword",
             "ignore_above": 256,
             "normalizer": "lowercase_normalizer"
           },
-          "type": {
-            "type": "keyword",
-            "ignore_above": 256,
-            "normalizer": "lowercase_normalizer"
-          },
-          "name": {
+          "reason": {
             "type": "text",
             "fields": {
               "keyword": {
@@ -26,56 +22,11 @@
               }
             }
           },
-          "description": {
-            "type": "text",
-            "fields": {
-              "keyword": {
-                "type": "keyword",
-                "ignore_above": 256,
-                "normalizer": "lowercase_normalizer"
-              }
-            }
+          "timeout": {
+            "type": "integer"
           },
-          "created_by": {
-            "type": "keyword",
-            "ignore_above": 256
-          },
-          "os_workspace": {
-            "type": "keyword",
-            "ignore_above": 256
-          },
-          "status": {
-            "type": "keyword",
-            "ignore_above": 256
-          },
-          "progress": {
-            "type": "float"
-          },
-          "message": {
-            "type": "text",
-            "fields": {
-              "keyword": {
-                "type": "keyword",
-                "ignore_above": 256,
-                "normalizer": "lowercase_normalizer"
-              }
-            }
-          },
-          "metadata": {
-            "type": "object"
-          },
-          "created_at": {
+          "timestamp": {
             "type": "date"
-          },
-          "last_updated_at": {
-            "type": "date"
-          },
-          "canceled_at": {
-            "type": "date"
-          },
-          "canceled_by": {
-            "type": "keyword",
-            "ignore_above": 256
           }
         }
       },
@@ -2747,29 +2698,20 @@
         "max_analyzed_offset": "1000000"
       },
       "number_of_shards": "1",
-      "provided_name": "os_ontology_v1",
       "max_result_window": "1000000",
       "knn": "true",
-      "creation_date": "1757182021299",
       "analysis": {
         "normalizer": {
           "lowercase_normalizer": {
             "type": "custom",
             "char_filter": [],
-            "filter": [
-              "lowercase",
-              "asciifolding"
-            ]
+            "filter": ["lowercase", "asciifolding"]
           }
         },
         "analyzer": {
           "default": {
             "tokenizer": "standard",
-            "filter": [
-              "lowercase",
-              "asciifolding",
-              "edge_ngram_filter"
-            ]
+            "filter": ["lowercase", "asciifolding", "edge_ngram_filter"]
           },
           "shingle_2_3": {
             "type": "custom",
@@ -2805,11 +2747,7 @@
           }
         }
       },
-      "number_of_replicas": "1",
-      "uuid": "21nNJLcOTsKKNbyXHgcDPA",
-      "version": {
-        "created": "136397827"
-      }
+      "number_of_replicas": "1"
     }
   }
 }
