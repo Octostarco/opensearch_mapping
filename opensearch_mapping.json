@@ -2691,6 +2691,10 @@
             }
           }
         }
+      },
+      "indexing_query_id": {
+        "type": "keyword",
+        "ignore_above": 256
       }
     }
   },
